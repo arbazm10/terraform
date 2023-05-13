@@ -105,9 +105,9 @@ resource "aws_route_table_association" "public-asso" {
   route_table_id = aws_route_table.public-rt.id
 }
 
-resource "aws_key_pair" "kevinkey" {
-  key_name   = "kevinkey"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzUskn0dr4sim25gL1pKT5L0aNvBhUV8p4a9kj+Z8NKah82Jc8erHnO2vg6XJ69eMkCKS6Nwn8eJIWIGoVEZLHQXvfe1yjRU04Tuwf6qg3ecF8ZMMGZz+VZOwtMq4XiObUSbHH381UvnFL720o7QnDjb0/Vj3JseACsjUVQFZwSjM87jPyAKj82mnSpkD7yytvGlvmBr44HCTlyhYCdbHf4i3KRJVxjpI7tzR3n0xML6TrrPgOWPRS7kUdX/1JWXMaVh1l6TYMkLzVyBg3lWRKZ6GUird3lOO7UQic/QJbNM/6igPTsdGP203WHEUFBQNG9GA+tRHV1Yl9GswYgkp/ root@ip-172-31-43-116.ap-south-1.compute.internal"
+resource "aws_key_pair" "a2z" {
+  key_name   = "a2z"
+  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCVyPY6dSN5i/vyLq5aESmyExJrK85bPIPgsz8FBzbZKMLKnQTiQE+CwUkq+nKtMO4f/bXmzInf400mAeP8/gD0rfGXPdKaNQUwfIaVWkUN8Kwc86ArTPP7uF/9QrujvcOzfGSLr36y0fkFaWX02GP9BmS0i/VnepW/cEheQ0svXBMicKwmWus/SPA1xjjKYDrNcssn77nSMBZX+1cRXd6fQdGlgbYa2lIexJCxfb+nrQbC7Hkgxl99Zkas2PMnzlI+cFB38BSfbs7+2NGd3FmjsZrLmWcsRiFS26k0+msuY6mjQocmh825myJbpr3LFTQ2cn+iF/FKavNkzLe9UY2T a2z"
 }
 
 resource "aws_instance" "cloudknowledge-instance" {
@@ -117,11 +117,11 @@ resource "aws_instance" "cloudknowledge-instance" {
  vpc_security_group_ids = [aws_security_group.kevinsg.id]
 
 
- key_name       = "kevinkey"
+ key_name       = "a2z"
 
 
   tags = {
-    Name = "kevin-india"
+    Name = "a2z"
 
 
   }
@@ -131,7 +131,7 @@ resource "aws_instance" "db-instance" {
   instance_type = "t2.micro"
   subnet_id     = aws_subnet.private-subnet.id
  vpc_security_group_ids = [aws_security_group.kevinsg.id]
- key_name       = "kevinkey"
+ key_name       = "a2z"
   tags = {
     Name = "kevin-belgium"
   }
